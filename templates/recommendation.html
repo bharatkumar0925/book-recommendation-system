@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation</title>
+    <style>
+        /* Styling for headings */
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        h3 {
+            color: #777;
+        }
+
+        /* Styling for navigation links */
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        /* Styling for book display */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding: 5px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Book Recommendation</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/best_books">Best Books</a></li>
+        </ul>
+    </nav>
+
+    <form action="/recommendation" method="post">
+        <label for="book">Select a book:</label>
+        <select id="book" name="book">
+            {% for title in book_titles %}
+                <option value="{{ title }}">{{ title }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Recommend">
+    </form>
+
+    {% if selected_book %}
+        <h2>Selected Book: {{ selected_book }}</h2>
+        <h3>Author: {{ selected_book_author }}</h3>
+        <h3>Recommended Books:</h3>
+        <ul>
+            {% for book, author in books %}
+                <li>{{ book }} - {{ author }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

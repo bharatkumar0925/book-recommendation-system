@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popular Books</title>
+    <style>
+        /* Styling for headings and navigation links */
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        /* Styling for form */
+        form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Styling for table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Styling for Book-Title */
+        td:nth-child(2) {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Popular Books</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommendation">Recommendation</a></li>
+        </ul>
+    </nav>
+    <form action="/best_books" method="post">
+        <label for="n">Number Of Books</label><br>
+        <input type="number" id="n" name="n" value="50" min="10" max="1000" step="10">
+        <input type="submit" value="Show">
+    </form>
+
+    {{ popular | safe }}
+</body>
+</html>
